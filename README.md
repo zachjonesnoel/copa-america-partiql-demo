@@ -1,5 +1,14 @@
 # copa-america-partiql-demo
 
+For the implementation of PartiQL based SELECT statements, from the previous blog post, I've continued to develop queries for -
+
+- Getting all the teams for Copa America
+- Getting team info
+- Getting all the matches for Copa America
+- Getting all the matches played by a team
+
+A detailed implementation is available on 
+
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
 - copa-america-partiql-demo - Code for the application's Lambda function.
