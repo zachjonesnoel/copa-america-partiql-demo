@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'copa-america-partiql-demo
+
+  Sample SAM Template for copa-america-partiql-demo
+
+  '
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  CopaAmericaPartiQLDemoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: CopaAmericaPartiQLDemoFunction
+      Handler: app.lambdaHandler
+      Runtime: nodejs14.x
+      Events:
+        GetTeams:
+          Type: Api
+          Properties:
+            Path: /teams
+            Method: get
+        GetMatches:
+          Type: Api
+          Properties:
+            Path: /matches
+            Method: get
+        GetTeamDetails:
+          Type: Api
+          Properties:
+            Path: /teams/{id}
+            Method: get
+        GetMatchesOfATeam:
+          Type: Api
+          Properties:
+            Path: /matches/{id}
+            Method: get
+Outputs:
+  CopaAmericaPartiQLDemoApi:
+    Description: API Gateway endpoint URL for Prod stage for getting all teams
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/teams/
+  CopaAmericaPartiQLDemoApiForATeam:
+    Description: API Gateway endpoint URL for Prod stage for getting a team's details
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/teams/Brazil
+  CopaAmericaPartiQLDemoApiMatches:
+    Description: API Gateway endpoint URL for Prod stage for getting all match scores
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/matches/
+  CopaAmericaPartiQLDemoApiMatchesOfATeam:
+    Description: API Gateway endpoint URL for Prod stage for getting a team's match
+      history
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/matches/Brazil
+  CopaAmericaPartiQLDemoFunction:
+    Description: Hello World Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - CopaAmericaPartiQLDemoFunction
+      - Arn
+  CopaAmericaPartiQLDemoIamRole:
+    Description: Implicit IAM Role created for lambda function
+    Value:
+      Fn::GetAtt:
+      - CopaAmericaPartiQLDemoFunctionRole
+      - Arn
