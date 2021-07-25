@@ -7,7 +7,7 @@ For the implementation of PartiQL based SELECT statements, from the previous blo
 - Getting all the matches for Copa America
 - Getting all the matches played by a team
 
-A detailed implementation is available on 
+A detailed implementation is available on https://dev.to/awscommunity-asean/dynamodb-with-partiql-part-2-47fe
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
